@@ -1,5 +1,4 @@
 import React from 'react';
-
 const FormField = ({
   labelName,
   type,
@@ -40,5 +39,4 @@ const FormField = ({
     />
   </div>
 );
-
 export default FormField;

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 
 import { Card, FormField, Loader } from '../components';
@@ -18,15 +17,16 @@ const RenderCards = ({ data, title }) => {
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const [allPosts, setAllPosts] = useState(null);
+
   const [searchText, setSearchText] = useState('');
-  const [searchedResults, setSearchedResults] = useState(null);
   const [searchTimeout, setSearchTimeout] = useState(null);
+  const [searchedResults, setSearchedResults] = useState(null);
 
   const fetchPosts = async () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8000/api/v1/post", {
+      const response = await fetch('http://localhost:8000/api/v1/post', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -53,9 +53,9 @@ const Home = () => {
     setSearchText(e.target.value);
 
     setSearchTimeout(
-      setTimeout(() => {// below is filter prompt 
-        const searchResults = allPosts.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()) || item.prompt.toLowerCase().includes(searchText.toLowerCase()));
-        setSearchedResults(searchResults);
+      setTimeout(() => {
+        const searchResult = allPosts.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()) || item.prompt.toLowerCase().includes(searchText.toLowerCase()));
+        setSearchedResults(searchResult);
       }, 500),
     );
   };
